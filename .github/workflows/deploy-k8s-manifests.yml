@@ -8,6 +8,7 @@ env:
   BRANCH_RELEASE: releases/k8s-manifests
   BRANCH_DEPLOY: deploys/k8s-manifests
   REGCRED_NAMESPACES: |
+    chime
 
 jobs:
   deploy-k8s-manifests:
