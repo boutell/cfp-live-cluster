@@ -13,3 +13,6 @@ namespace = "chime"
 release_name = "chime"
 
 chart_path = "helm-chart"
+value_files = [
+    "release-values.yaml"
+]
