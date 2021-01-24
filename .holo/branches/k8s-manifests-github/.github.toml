@@ -1,5 +1,5 @@
 [holomapping]
-holosource = "cfp-sandbox-cluster"
+holosource = "cfp-live-cluster"
 root = ".github"
 files = [
     # workflows triggered by target branch must be included within it
