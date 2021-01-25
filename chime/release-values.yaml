@@ -1,2 +1,14 @@
 image:
   tag: 1.1.5
+
+ingress:
+  hosts:
+    - host: penn-chime.phl.io
+      paths: [ '/' ]
+    - host: penn-chime.live.k8s.phl.io
+      paths: [ '/' ]
+  tls:
+    - secretName: penn-chime-tls
+      hosts:
+        - penn-chime.phl.io
+        - penn-chime.live.k8s.phl.io
