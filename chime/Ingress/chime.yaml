@@ -41,7 +41,15 @@ spec:
               serviceName: chime
               servicePort: 80
             path: /
+    - host: penn-chime.live.k8s.phl.io
+      http:
+        paths:
+          - backend:
+              serviceName: chime
+              servicePort: 80
+            path: /
   tls:
     - hosts:
         - penn-chime.phl.io
+        - penn-chime.live.k8s.phl.io
       secretName: penn-chime-tls
