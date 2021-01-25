@@ -2,6 +2,7 @@
 files = [
     "**",
     "!.github/**",
+    "!docs/**",
     "!mkdocs.*.yml",
     "!README.md"
 ]
