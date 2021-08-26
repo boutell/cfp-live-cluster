@@ -8,7 +8,7 @@ site:
     - www.codeforphilly.com
 
   image:
-    repository:
+    repository: ghcr.io/codeforphilly/codeforphilly.org/site-composite
     tag: 1.0.3
 
 ingress:
