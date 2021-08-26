@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/instance: code-for-philly
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: code-for-philly
+    app.kubernetes.io/version: 1.0.0
+    helm.sh/chart: emergence-site-1.0.0
+  name: code-for-philly
+  namespace: code-for-philly
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: code-for-philly
+      app.kubernetes.io/name: code-for-philly
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: code-for-philly
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: code-for-philly
+        app.kubernetes.io/version: 1.0.0
+        helm.sh/chart: emergence-site-1.0.0
+    spec:
+      containers:
+        - env:
+            - name: HAB_LICENSE
+              value: accept-no-persist
+            - name: HAB_SITE_COMPOSITE
+              value: |
+                [services.mysql]
+                pkg_ident = "core/mysql"
+            - name: HAB_SITE
+              value: |
+                default_timezone = "America/New_York"
+
+                [sites.default]
+                  primary_hostname = "codeforphilly.org"
+
+                [core]
+            - name: HAB_MYSQL
+              value: |
+                app_username = "admin"
+                app_password = "admin"
+                bind = "0.0.0.0"
+          image: ':1.0.3'
+          imagePullPolicy: Always
+          name: code-for-philly-site
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /hab/svc/site/data
+              name: code-for-philly-site
+              subPath: data
+            - mountPath: /hab/svc/mysql/data
+              name: code-for-philly-database
+              subPath: data
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 42
+      volumes:
+        - name: code-for-philly-site
+          persistentVolumeClaim:
+            claimName: code-for-philly-site
+        - name: code-for-philly-database
+          persistentVolumeClaim:
+            claimName: code-for-philly-database
