@@ -1,0 +1,3 @@
+[holomapping]
+holosource = "code-for-philly=>helm-chart"
+files = "**"
