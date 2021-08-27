@@ -16,7 +16,7 @@ metadata:
   namespace: code-for-philly
 spec:
   rules:
-    - host: codeforphilly.org
+    - host: codeforphilly.live.k8s.phl.io
       http:
         paths:
           - backend:
@@ -25,5 +25,5 @@ spec:
             path: /
   tls:
     - hosts:
-        - codeforphilly.org
+        - codeforphilly.live.k8s.phl.io
       secretName: code-for-philly-tls
