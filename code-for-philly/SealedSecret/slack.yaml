@@ -5,6 +5,7 @@ metadata:
     sealedsecrets.bitnami.com/cluster-wide: 'true'
   creationTimestamp: null
   name: slack
+  namespace: code-for-philly
 spec:
   encryptedData:
     SLACK_ACCESS_TOKEN: >-

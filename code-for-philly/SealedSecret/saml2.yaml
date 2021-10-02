@@ -5,6 +5,7 @@ metadata:
     sealedsecrets.bitnami.com/cluster-wide: 'true'
   creationTimestamp: null
   name: saml2
+  namespace: code-for-philly
 spec:
   encryptedData:
     SAML2_CERTIFICATE: >-

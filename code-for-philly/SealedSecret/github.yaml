@@ -5,6 +5,7 @@ metadata:
     sealedsecrets.bitnami.com/cluster-wide: 'true'
   creationTimestamp: null
   name: github
+  namespace: code-for-philly
 spec:
   encryptedData:
     GITHUB_ACCESS_TOKEN: >-
