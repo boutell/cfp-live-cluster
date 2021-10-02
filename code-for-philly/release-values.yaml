@@ -8,6 +8,14 @@ site:
     repository: ghcr.io/codeforphilly/codeforphilly.org/site-composite
     tag: 1.1.8
 
+  secrets:
+    - name: 'discourse'
+    - name: 'github'
+    - name: 'mailchimp'
+    - name: 'recaptcha'
+    - name: 'saml2'
+    - name: 'slack'
+
 ingress:
   enabled: true
   # secondaryHostnames:
