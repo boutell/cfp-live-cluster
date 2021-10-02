@@ -47,7 +47,7 @@ spec:
                 app_username = "admin"
                 app_password = "admin"
                 bind = "0.0.0.0"
-          image: 'ghcr.io/codeforphilly/codeforphilly.org/site-composite:1.1.4'
+          image: 'ghcr.io/codeforphilly/codeforphilly.org/site-composite:1.1.6'
           imagePullPolicy: Always
           name: code-for-philly-site
           ports:
