@@ -47,7 +47,20 @@ spec:
                 app_username = "admin"
                 app_password = "admin"
                 bind = "0.0.0.0"
-          image: 'ghcr.io/codeforphilly/codeforphilly.org/site-composite:1.1.7'
+          envFrom:
+            - secretRef:
+                name: discourse
+            - secretRef:
+                name: github
+            - secretRef:
+                name: mailchimp
+            - secretRef:
+                name: recaptcha
+            - secretRef:
+                name: saml2
+            - secretRef:
+                name: slack
+          image: 'ghcr.io/codeforphilly/codeforphilly.org/site-composite:1.1.8'
           imagePullPolicy: Always
           name: code-for-philly-site
           ports:
