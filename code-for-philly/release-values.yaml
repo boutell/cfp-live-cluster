@@ -10,6 +10,7 @@ site:
 
   secrets:
     - name: 'discourse'
+    - name: 'email'
     - name: 'github'
     - name: 'mailchimp'
     - name: 'recaptcha'
