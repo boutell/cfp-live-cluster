@@ -39,7 +39,7 @@ spec:
                 default_timezone = "America/New_York"
 
                 [sites.default]
-                  primary_hostname = "codeforphilly.live.k8s.phl.io"
+                  primary_hostname = "codeforphilly.org"
 
                 [core]
             - name: HAB_MYSQL
