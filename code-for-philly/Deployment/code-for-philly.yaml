@@ -51,6 +51,8 @@ spec:
             - secretRef:
                 name: discourse
             - secretRef:
+                name: email
+            - secretRef:
                 name: github
             - secretRef:
                 name: mailchimp
@@ -60,7 +62,7 @@ spec:
                 name: saml2
             - secretRef:
                 name: slack
-          image: 'ghcr.io/codeforphilly/codeforphilly.org/site-composite:1.1.8'
+          image: 'ghcr.io/codeforphilly/codeforphilly.org/site-composite:1.1.11'
           imagePullPolicy: Always
           name: code-for-philly-site
           ports:
