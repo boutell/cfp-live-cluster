@@ -1,8 +1,8 @@
 site:
   name: code-for-philly
   title: "Code for Philly"
-  canonicalHostname: codeforphilly.live.k8s.phl.io
-  # canonicalHostname: codeforphilly.org
+  canonicalHostname: codeforphilly.org
+  # canonicalHostname: codeforphilly.live.k8s.phl.io
 
   image:
     repository: ghcr.io/codeforphilly/codeforphilly.org/site-composite
@@ -19,10 +19,12 @@ site:
 
 ingress:
   enabled: true
-  # secondaryHostnames:
-  #   - www.codeforphilly.org
-  #   - codeforphilly.com
-  #   - www.codeforphilly.com
+  secondaryHostnames:
+    - codeforphilly.live.k8s.phl.io
+    - www.codeforphilly.org
+    # using URL Redirects at the registrar level for now:
+    # - codeforphilly.com
+    # - www.codeforphilly.com
 
 volumes:
   site: 10Gi
