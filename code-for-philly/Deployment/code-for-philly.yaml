@@ -40,6 +40,7 @@ spec:
 
                 [sites.default]
                   primary_hostname = "codeforphilly.org"
+                  title = "Code for Philly"
 
                 [core]
             - name: HAB_MYSQL
@@ -62,7 +63,7 @@ spec:
                 name: saml2
             - secretRef:
                 name: slack
-          image: 'ghcr.io/codeforphilly/codeforphilly.org/site-composite:1.1.11'
+          image: 'ghcr.io/codeforphilly/codeforphilly.org/site-composite:1.1.12'
           imagePullPolicy: Always
           name: code-for-philly-site
           ports:
