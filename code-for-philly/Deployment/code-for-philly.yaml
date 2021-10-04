@@ -51,6 +51,8 @@ spec:
             - secretRef:
                 name: discourse
             - secretRef:
+                name: email
+            - secretRef:
                 name: github
             - secretRef:
                 name: mailchimp
