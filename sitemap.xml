@@ -2,32 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://codeforphilly.github.io/cfp-live-cluster/</loc>
-         <lastmod>2021-09-22</lastmod>
+         <lastmod>2021-10-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://codeforphilly.github.io/cfp-live-cluster/echo-service/</loc>
-         <lastmod>2021-09-22</lastmod>
+         <lastmod>2021-10-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://codeforphilly.github.io/cfp-live-cluster/development/</loc>
-         <lastmod>2021-09-22</lastmod>
+         <lastmod>2021-10-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://codeforphilly.github.io/cfp-live-cluster/development/features/ingress/</loc>
-         <lastmod>2021-09-22</lastmod>
+         <lastmod>2021-10-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://codeforphilly.github.io/cfp-live-cluster/getting-started/</loc>
-         <lastmod>2021-09-22</lastmod>
+         <lastmod>2021-10-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://codeforphilly.github.io/cfp-live-cluster/getting-started/service-setup/grafana/</loc>
-         <lastmod>2021-09-22</lastmod>
+         <lastmod>2021-10-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://codeforphilly.github.io/cfp-live-cluster/getting-started/service-setup/sealed-secrets/</loc>
+         <lastmod>2021-10-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
