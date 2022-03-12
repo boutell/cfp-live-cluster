@@ -23,3 +23,7 @@ vaultwarden:
   admin:
     enabled: true
     existingSecret: admin-token
+
+# TODO: migrate to postgresql + restic snapshot
+persistence:
+  enabled: true
