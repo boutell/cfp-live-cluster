@@ -1,0 +1,11 @@
+# These values are applied last as downstream overrides
+# Defaults: https://github.com/gissilabs/charts/blob/master/vaultwarden/values.yaml
+# Documentation: https://github.com/gissilabs/charts/tree/master/vaultwarden#helm-chart
+
+ingress:
+  enabled: true
+  host: vaultwarden.phl.io
+  tls:
+    - secretName: vaultwarden-tls
+      hosts:
+        - vaultwarden.phl.io

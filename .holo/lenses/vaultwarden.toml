@@ -1,0 +1,18 @@
+[hololens]
+package = "holo/lens-helm3/1.5"
+
+[hololens.input]
+root = "vaultwarden"
+files = "**"
+
+[hololens.output]
+merge = "replace"
+
+[hololens.helm]
+namespace = "vaultwarden"
+release_name = "vaultwarden"
+
+chart_path = "helm-chart"
+value_files = [
+    "release-values.yaml"
+]
