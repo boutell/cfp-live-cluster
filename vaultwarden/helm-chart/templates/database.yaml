@@ -29,10 +29,16 @@ spec:
       containers:
       - name: postgresql
         image: {{ .Values.database.postgresql.image.repository }}:{{ .Values.database.postgresql.image.tag }}
-        {{- if .Values.database.postgresql.config }}
+        {{- if or .Values.database.postgresql.config .Values.database.postgresql.existingSecret }}
         envFrom:
+        {{- if .Values.database.postgresql.config }}
         - configMapRef:
             name: {{ include "vaultwarden.fullname" . }}-postgresql
+        {{- end }}
+        {{- if .Values.database.postgresql.existingSecret }}
+        - secretRef:
+            name: {{ .Values.database.postgresql.existingSecret }}
+        {{- end }}
         {{- end }}
         ports:
         - containerPort: 5432

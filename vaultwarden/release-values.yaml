@@ -25,6 +25,8 @@ vaultwarden:
     existingSecret: admin-token
 
 database:
+  type: postgresql
+  existingSecret: database-url
   postgresql:
     image:
       repository: postgres
@@ -34,6 +36,8 @@ database:
     volumes:
       data:
         size: 5Gi
+    existingSecret: postgresql
+    config: {}
     podAnnotations: {}
     nodeSelector: {}
     affinity: {}
