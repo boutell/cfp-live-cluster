@@ -1,4 +1,7 @@
 [holomapping]
 holosource = "gissilabs-charts"
 root = "vaultwarden"
-files = "**"
+files = [
+    "**",
+    "!templates/tests/**"
+]
