@@ -8,6 +8,7 @@ metadata:
     app.kubernetes.io/version: 1.23.0
     helm.sh/chart: vaultwarden-0.5.1
   name: vaultwarden
+  namespace: vaultwarden
 spec:
   ports:
     - name: http
