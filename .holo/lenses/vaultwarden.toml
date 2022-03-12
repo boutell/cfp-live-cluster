@@ -14,5 +14,5 @@ release_name = "vaultwarden"
 
 chart_path = "helm-chart"
 value_files = [
-    # "release-values.yaml"
+    "release-values.yaml"
 ]
