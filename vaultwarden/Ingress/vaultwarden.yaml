@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app.kubernetes.io/instance: vaultwarden
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: vaultwarden
+    app.kubernetes.io/version: 1.23.0
+    helm.sh/chart: vaultwarden-0.5.1
+  name: vaultwarden
+  namespace: vaultwarden
+spec:
+  rules:
+    - host: vaultwarden.phl.io
+      http:
+        paths:
+          - backend:
+              serviceName: vaultwarden
+              servicePort: 3012
+            path: /notifications/hub
+          - backend:
+              serviceName: vaultwarden
+              servicePort: 80
+            path: /
+  tls:
+    - hosts:
+        - vaultwarden.phl.io
+      secretName: vaultwarden-tls
