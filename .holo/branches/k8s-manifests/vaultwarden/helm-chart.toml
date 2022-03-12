@@ -1,0 +1,4 @@
+[holomapping]
+holosource = "gissilabs-charts"
+root = "vaultwarden"
+files = "**"
