@@ -11,6 +11,7 @@ merge = "replace"
 [hololens.helm]
 namespace = "vaultwarden"
 release_name = "vaultwarden"
+namespace_fill = true
 
 chart_path = "helm-chart"
 value_files = [
