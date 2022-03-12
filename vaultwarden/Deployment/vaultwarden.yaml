@@ -45,6 +45,8 @@ spec:
               value: all
             - name: ENABLE_DB_WAL
               value: 'true'
+            - name: DOMAIN
+              value: 'https://vaultwarden.phl.io'
             - name: ADMIN_TOKEN
               valueFrom:
                 secretKeyRef:
