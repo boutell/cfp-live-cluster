@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/instance: vaultwarden
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: vaultwarden
+    app.kubernetes.io/version: 1.23.0
+    helm.sh/chart: vaultwarden-0.5.1
+  name: vaultwarden
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: vaultwarden
+      app.kubernetes.io/name: vaultwarden
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: vaultwarden
+        app.kubernetes.io/name: vaultwarden
+    spec:
+      containers:
+        - env:
+            - name: ROCKET_PORT
+              value: '8080'
+            - name: SIGNUPS_ALLOWED
+              value: 'true'
+            - name: SIGNUPS_VERIFY
+              value: 'false'
+            - name: REQUIRE_DEVICE_EMAIL
+              value: 'false'
+            - name: INVITATIONS_ALLOWED
+              value: 'true'
+            - name: SHOW_PASSWORD_HINT
+              value: 'false'
+            - name: WEBSOCKET_ENABLED
+              value: 'true'
+            - name: WEB_VAULT_ENABLED
+              value: 'true'
+            - name: SENDS_ALLOWED
+              value: 'true'
+            - name: ORG_CREATION_USERS
+              value: all
+            - name: ENABLE_DB_WAL
+              value: 'true'
+            - name: EMERGENCY_ACCESS_ALLOWED
+              value: 'true'
+          image: 'vaultwarden/server:1.23.0'
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          name: vaultwarden
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+            - containerPort: 3012
+              name: websocket
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources: {}
+          securityContext:
+            runAsGroup: 65534
+            runAsUser: 65534
+          volumeMounts:
+            - mountPath: /data
+              name: vaultwarden
+      securityContext:
+        fsGroup: 65534
+      serviceAccountName: default
+      volumes:
+        - emptyDir: {}
+          name: vaultwarden

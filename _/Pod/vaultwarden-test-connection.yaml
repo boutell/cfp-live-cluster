@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    helm.sh/hook: test-success
+  labels:
+    app.kubernetes.io/instance: vaultwarden
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: vaultwarden
+    app.kubernetes.io/version: 1.23.0
+    helm.sh/chart: vaultwarden-0.5.1
+  name: vaultwarden-test-connection
+spec:
+  containers:
+    - args:
+        - 'vaultwarden:80'
+      command:
+        - wget
+      image: busybox
+      name: wget
+  restartPolicy: Never
