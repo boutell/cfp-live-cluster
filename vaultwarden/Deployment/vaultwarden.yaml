@@ -44,7 +44,12 @@ spec:
             - name: ORG_CREATION_USERS
               value: all
             - name: ENABLE_DB_WAL
-              value: 'true'
+              value: 'false'
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  key: database-url
+                  name: database-url
             - name: DOMAIN
               value: 'https://vaultwarden.phl.io'
             - name: ADMIN_TOKEN
