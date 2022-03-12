@@ -14,7 +14,7 @@ ingress:
         - vaultwarden.phl.io
 
 vaultwarden:
-  domain: vaultwarden.phl.io
+  domain: https://vaultwarden.phl.io
   smtp:
     enabled: true
     host: smtp.postmarkapp.com
