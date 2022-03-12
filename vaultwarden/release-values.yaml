@@ -13,12 +13,12 @@ ingress:
       hosts:
         - vaultwarden.phl.io
 
-smtp:
-  enabled: true
-  host: smtp.postmarkapp.com
-  from: support@codeforphilly.org
-  existingSecret: smtp-postmark
-
-admin:
-  enabled: true
-  existingSecret: admin-token
+vaultwarden:
+  smtp:
+    enabled: true
+    host: smtp.postmarkapp.com
+    from: support@codeforphilly.org
+    existingSecret: smtp-postmark
+  admin:
+    enabled: true
+    existingSecret: admin-token
