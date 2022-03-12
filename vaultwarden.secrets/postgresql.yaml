@@ -1,0 +1,18 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: postgresql
+  namespace: vaultwarden
+spec:
+  encryptedData:
+    POSTGRES_PASSWORD: AgCKRUYtG/CICkjiFiZ4Hlm2KBBeLeK9YgEaBMWVhfQ2WreT9EDI+WydjWULrUbnG9D2mCI5V6rINRd3xhR7lwS0jHD2b2lAmT+fHPgcgaLLr2f/Ff05uvKCA7FnlJPlgqe1SbEmhnQCZc4JwRaUhyI/vUV0uY5FQCxoqEvd4GVQunsixafUTKx0i8/XWm5A+/KL21lSiEzTAOo5nWaV/c80j25aWIByUPJOaS784saUnJmsjdvFpjJnfUy6UYo1pmRC/c8Zz2AXopBm/YV+dn8L+z8QONyr2hAMTld03QshQ6QIwI4g6Mhe8vQCUNGjn31/L7e5SjloEzLcLvV38hbgwt/X/vg2TGLKSIPydew1TWoY2AuydPTmqCU+AB7dzvK7LG6L96UGb5iPIcud8UiutxIfKC+9gaCEAYzMvCKNy5g91BL+fnY+vrRzbu0gZCQw55dFnlUawy1dFC6MGIyJsRWIBMt/D40+dzqgsjQ9mOw/BUm1faT1r7vaPxRFZEL1z4gJNYgX1XXKXA7zAbW0QI+ytIB7jTnvRIIAvEzLa0t7imMUbTeV7wZY2KjDC2c1jQmPQrrRFvxDE/FX8AgYjINinM4mKzYDbgihPtokIFa+D5URVVVkWOHlM24ClrTPHunyVP5g1lSejbOAJlGZoKEmFC71Wew2+FzDftRjY6RmtftvztMRps4uou1elhNrlpbrLE2cHbd12r0tuJAWN571xPUsFq4iH7U1llId9w==
+    POSTGRES_USER: AgBcgGPPgXC/jREczSqEQD0fHGfG0RfTv3QhyDrxZOYnrHMXgS0QabShMCmP92u6dNgG3Z8++fKgav9756b/d5AtV2p6cmxdFWRzy643/piNugCPVi1CAtJ/AXgZMVUns4Q+FEkoGQZQRiVWEtfO2NoMsDfNMp3mNkX/0pmzzxO6FaKDZS9DGn1n13ZkFmo8JpTBmVbfOPbayKn8EjS7K3CS9Gtlbj6S1kyTcV2u13392LOcbIEMr+4N5JNPil3JjWUxn1hJdOexnJoC137tBFEs61fBgIYnWoPUd/WzoGpj2P+UlpdImavo/dLG2lvsFAM3kx/a/bpW8FNigbio99/4y0WPxX0/s0yEsAiUqC0pa4KstfIXut5/9Hn6Kb8kmdAZkoFp+Sa1MF2UnryoCTNGCSbPCcrkWDwgdDBEhojAxEx2qI3e94QpehmJVyvI3Ho3ESkX2C+MQCII2AyNxnH+q9ZVguJXaCai+WrOFCWMP77N6p1AH5vFsrQViOAntwDm6BkkQxQryQVC1X6LVdoJAatuQfaw2WkySTJanScI40j79tNxGmz4S3dL5Qjt7fFHqk5vlK/nLHR3Hx6I6MniuKOevkd7eNt56b57fijuutfEtx4+X1AuGoLASMhW4M8A0FikX//F/eqK0xM9Z+x2F/D22a1H2Mjx9O/Vbey/U7B/jVMJm8a3CmgrIXtJ1nis6BrrR2elIWsEcg==
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: postgresql
+      namespace: vaultwarden
+    type: Opaque
+

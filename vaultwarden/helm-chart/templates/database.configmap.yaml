@@ -1,0 +1,13 @@
+{{- if .Values.database.postgresql.config }}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "vaultwarden.fullname" . }}-postgresql
+  labels:
+    {{- include "vaultwarden.labels" . | nindent 4 }}
+    component: postgresql
+data:
+  {{- toYaml .Values.database.postgresql.config | nindent 2 }}
+
+{{- end }}
