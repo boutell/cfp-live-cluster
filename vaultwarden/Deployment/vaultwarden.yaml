@@ -75,7 +75,7 @@ spec:
                 secretKeyRef:
                   key: smtp-password
                   name: smtp-postmark
-          image: 'vaultwarden/server:1.23.0'
+          image: 'vaultwarden/server:1.24.0'
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -104,5 +104,6 @@ spec:
         fsGroup: 65534
       serviceAccountName: default
       volumes:
-        - emptyDir: {}
-          name: vaultwarden
+        - name: vaultwarden
+          persistentVolumeClaim:
+            claimName: vaultwarden
