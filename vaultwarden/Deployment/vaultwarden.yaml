@@ -104,5 +104,6 @@ spec:
         fsGroup: 65534
       serviceAccountName: default
       volumes:
-        - emptyDir: {}
-          name: vaultwarden
+        - name: vaultwarden
+          persistentVolumeClaim:
+            claimName: vaultwarden
