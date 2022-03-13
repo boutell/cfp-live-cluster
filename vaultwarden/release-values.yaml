@@ -47,3 +47,7 @@ database:
     affinity: {}
     tolerations: []
     # TODO: configure backups to cloud bucket
+
+# even with postgresql, data directory still contains attachment data
+persistence:
+  enabled: true
