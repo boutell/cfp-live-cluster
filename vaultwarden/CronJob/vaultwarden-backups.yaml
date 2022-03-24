@@ -19,6 +19,8 @@ spec:
           containers:
             - args:
                 - |
+                  set -o pipefail
+
                   echo "Snapshotting Database"
                   pg_dumpall --clean \
                     | gzip --rsyncable \
@@ -52,10 +54,13 @@ spec:
                     backup_status=0
 
                     if [ $sql_snapshot_status -ne 0 ]; then
+                      echo "Reporting failure: SQL snapshot"
                       backup_status=1
                     elif [ $volume_snapshot_status -ne 0 ]; then
+                      echo "Reporting failure: Data snapshot"
                       backup_status=2
                     elif [ $prune_status -ne 0 ]; then
+                      echo "Reporting failure: Prune"
                       backup_status=3
                     fi
 
