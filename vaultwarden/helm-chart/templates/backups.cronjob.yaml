@@ -46,7 +46,7 @@ spec:
             volumeMounts:
               - name: vaultwarden
                 mountPath: /data
-            command: ["/bin/sh", "-c"]
+            command: ["/bin/bash", "-c"]
             args:
               - |
                 set -o pipefail
