@@ -1,0 +1,87 @@
+{{- if .Values.backups.enabled -}}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "vaultwarden.fullname" . }}-backups
+  labels:
+    {{- include "vaultwarden.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.backups.schedule | quote }}
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 2700 # 45 minutes
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: restic-toolkit
+            image: ghcr.io/jarvusinnovations/restic-toolkit:1.2.0
+            imagePullPolicy: IfNotPresent
+            envFrom:
+            - secretRef:
+                name: {{ .Values.backups.secretName }}
+            env:
+            - name: PGHOST
+              value: {{ include "vaultwarden.fullname" . }}-postgresql
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATABASE
+              value: vaultwarden
+            - name: PGUSER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.database.postgresql.existingSecret }}
+                  key: POSTGRES_USER
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.database.postgresql.existingSecret }}
+                  key: POSTGRES_PASSWORD
+            command: ["/bin/sh", "-c"]
+            args:
+              - |
+                echo "Snapshotting Database"
+                pg_dumpall --clean \
+                  | gzip --rsyncable \
+                  | restic backup \
+                    --host '{{ include "vaultwarden.fullname" . }}' \
+                    --stdin \
+                    --stdin-filename '{{ include "vaultwarden.fullname" . }}.sql.gz'
+
+                sql_snapshot_status=$?
+
+
+                echo "Snapshotting Data Volume"
+                restic backup /data \
+                  --host '{{ include "vaultwarden.fullname" . }}' \
+                  --exclude='/data/icon_cache/**'
+
+                volume_snapshot_status=$?
+
+
+                echo "Pruning snapshots"
+                restic forget \
+                  --host '{{ include "vaultwarden.fullname" . }}' \
+                  --keep-last {{ .Values.backups.prune.keepLast }} \
+                  --keep-daily {{ .Values.backups.prune.keepDaily }} \
+                  --keep-weekly {{ .Values.backups.prune.keepWeekly }}
+
+                prune_status=$?
+
+
+                {{ if .Values.backups.snitchUrl }}
+                  backup_status=0
+
+                  if [ $sql_snapshot_status -ne 0 ]; then
+                    backup_status=1
+                  elif [ $volume_snapshot_status -ne 0 ]; then
+                    backup_status=2
+                  elif [ $prune_status -ne 0 ]; then
+                    backup_status=3
+                  fi
+
+                  wget -q -O - --post-data "s=${backup_status}" {{ .Values.backups.snitchUrl }}
+                {{ end }}
+
+{{- end }}

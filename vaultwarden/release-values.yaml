@@ -46,8 +46,17 @@ database:
     nodeSelector: {}
     affinity: {}
     tolerations: []
-    # TODO: configure backups to cloud bucket
 
 # even with postgresql, data directory still contains attachment data
 persistence:
   enabled: true
+
+backups:
+  enabled: true
+  snitchUrl: "https://nosnch.in/126d237239"
+  schedule: "40 * * * *"
+  secretName: "restic"
+  prune:
+    keepLast: 3
+    keepDaily: 7
+    keepWeekly: 52
