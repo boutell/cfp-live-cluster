@@ -19,6 +19,8 @@ spec:
           containers:
             - args:
                 - |
+                  set -o pipefail
+
                   echo "Snapshotting Database"
                   pg_dumpall --clean \
                     | gzip --rsyncable \
@@ -52,16 +54,19 @@ spec:
                     backup_status=0
 
                     if [ $sql_snapshot_status -ne 0 ]; then
+                      echo "Reporting failure: SQL snapshot"
                       backup_status=1
                     elif [ $volume_snapshot_status -ne 0 ]; then
+                      echo "Reporting failure: Data snapshot"
                       backup_status=2
                     elif [ $prune_status -ne 0 ]; then
+                      echo "Reporting failure: Prune"
                       backup_status=3
                     fi
 
                     wget -q -O - --post-data "s=${backup_status}" https://nosnch.in/126d237239
               command:
-                - /bin/sh
+                - /bin/bash
                 - '-c'
               env:
                 - name: PGHOST
@@ -83,8 +88,16 @@ spec:
               envFrom:
                 - secretRef:
                     name: restic
-              image: 'ghcr.io/jarvusinnovations/restic-toolkit:1.2.0'
+              image: 'ghcr.io/jarvusinnovations/restic-toolkit:1.3.0'
               imagePullPolicy: IfNotPresent
               name: restic-toolkit
+              volumeMounts:
+                - mountPath: /data
+                  name: vaultwarden
           restartPolicy: Never
+          volumes:
+            - name: vaultwarden
+              persistentVolumeClaim:
+                claimName: vaultwarden
+                readOnly: true
   schedule: 40 * * * *
