@@ -49,6 +49,8 @@ spec:
             command: ["/bin/sh", "-c"]
             args:
               - |
+                set -o pipefail
+
                 echo "Snapshotting Database"
                 pg_dumpall --clean \
                   | gzip --rsyncable \
