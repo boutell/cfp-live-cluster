@@ -94,6 +94,19 @@ spec:
               volumeMounts:
                 - mountPath: /data
                   name: vaultwarden
+          podAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - vaultwarden
+                    - key: app.kubernetes.io/instance
+                      operator: In
+                      values:
+                        - vaultwarden
+                topologyKey: kubernetes.io/hostname
           restartPolicy: Never
           volumes:
             - name: vaultwarden
