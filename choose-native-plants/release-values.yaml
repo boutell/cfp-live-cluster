@@ -3,6 +3,9 @@ image:
 
 ingress:
   enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
     - host: choose-native-plants.live.k8s.phl.io
       paths: [ '/' ]
