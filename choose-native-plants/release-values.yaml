@@ -1,0 +1,11 @@
+image:
+  tag: 0.1.0
+
+ingress:
+  hosts:
+    - host: choose-native-plants.live.k8s.phl.io
+      paths: [ '/' ]
+  tls:
+    - secretName: choose-native-plants-tls
+      hosts:
+        - choose-native-plants.live.k8s.phl.io
