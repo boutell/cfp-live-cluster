@@ -20,6 +20,7 @@ spec:
                 port:
                   number: 80
             path: /
+            pathType: Prefix
   tls:
     - hosts:
         - choose-native-plants.live.k8s.phl.io
