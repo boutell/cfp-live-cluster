@@ -19,19 +19,20 @@ spec:
             persistentVolumeClaim:
               claimName: vaultwarden
               readOnly: true
-          podAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              - labelSelector:
-                  matchExpressions:
-                  - key: app.kubernetes.io/name
-                    operator: In
-                    values:
-                    - {{ include "vaultwarden.name" . }}
-                  - key: app.kubernetes.io/instance
-                    operator: In
-                    values:
-                    - {{ .Release.Name }}
-                topologyKey: "kubernetes.io/hostname"
+          affinity:
+            podAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                - labelSelector:
+                    matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                      - {{ include "vaultwarden.name" . }}
+                    - key: app.kubernetes.io/instance
+                      operator: In
+                      values:
+                      - {{ .Release.Name }}
+                  topologyKey: "kubernetes.io/hostname"
           containers:
           - name: restic-toolkit
             image: ghcr.io/jarvusinnovations/restic-toolkit:1.3.0
