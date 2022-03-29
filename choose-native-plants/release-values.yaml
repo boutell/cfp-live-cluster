@@ -1,5 +1,6 @@
-image:
-  tag: 0.1.1
+app:
+  image:
+    tag: "0.1.1"
 
 ingress:
   enabled: true
