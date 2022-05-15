@@ -10,7 +10,15 @@ ingress:
   hosts:
     - host: choose-native-plants.live.k8s.phl.io
       paths: [ '/' ]
+    - host: choosenativeplants.com
+      paths: [ '/' ]
+    - host: www.choosenativeplants.com
+      paths: [ '/' ]
   tls:
     - secretName: choose-native-plants-tls
       hosts:
         - choose-native-plants.live.k8s.phl.io
+    - secretName: choose-native-plants-live-tls
+      hosts:
+        - choosenativeplants.com
+        - www.choosenativeplants.com
